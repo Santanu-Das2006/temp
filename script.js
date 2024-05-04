@@ -1,3 +1,28 @@
+let login = localStorage.getItem('login') || 'false'
+let change = document.querySelector('.nav-btn span')
+let click = document.querySelector('.nav-btn')
+click.addEventListener('click', (e) => {
+    if (change.innerHTML == 'Login') {
+        window.location.href = './login/login.html'
+    }
+    else if (change.innerHTML == 'Profile') {
+        console.log('success');
+    }
+})
+if (login == 'false') {
+    change.innerHTML = 'Login'
+}
+else if(login == 'true') {
+    change.innerHTML = 'Profile'
+}
+document.body.addEventListener('click', (e) => {
+    if (login == false || login == 'false') {
+        window.location.href = './login/login.html'
+    }
+})
+
+
+
 let logbtn = document.querySelector('.nav-btn')
 let amim = document.querySelector('.amim')
 logbtn.addEventListener('mouseover', (e) => {

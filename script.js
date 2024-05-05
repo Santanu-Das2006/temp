@@ -22,7 +22,6 @@ document.body.addEventListener('click', (e) => {
 })
 
 
-
 let logbtn = document.querySelector('.nav-btn')
 let amim = document.querySelector('.amim')
 logbtn.addEventListener('mouseover', (e) => {
@@ -96,4 +95,13 @@ anime({
     delay: anime.stagger(500, { start: 1000 }),
     direction: 'reverse',
     easing: 'easeInOutQuad'
+})
+
+let play = document.querySelectorAll('.button')
+play.forEach(play => {
+    play.addEventListener('click', (e) => {
+        let difficulty = e.target.id
+        localStorage.setItem('dif', difficulty)
+        window.location.href = './category/index.html'
+    })
 })

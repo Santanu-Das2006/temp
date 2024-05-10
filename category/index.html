@@ -3,501 +3,140 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>QuizzyQuest</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./logo.png" />
+    <style>
+      @font-face {
+        font-family: exo;
+        src: url("https://quizzy-quest.onrender.com/font");
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scrollbar-width: none;
+      }
+      body {
+        width: 100%;
+        height: 100%;
+        font-family: exo;
+        padding-top: 50px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+      body::-webkit-scrollbar {
+        display: none;
+      }
+      .grid-container {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        padding: 50px;
+      }
+      .topic {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 10px 20px;
+        text-align: center;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: scale 0.3s linear;
+      }
+      .topic > img {
+        width: 80px;
+      }
+      body > h1 {
+        text-align: center;
+      }
+      .topic:hover {
+        background-color: rgb(244, 244, 244);
+        text-decoration: underline;
+        scale: 1.1;
+      }
+      @media (max-width: 890px) {
+        .grid-container {
+          grid-template-columns: repeat(5, 1fr);
+          grid-template-rows: repeat(5, 1fr);
+        }
+      }
+      @media (max-width: 550px) {
+        .grid-container {
+          grid-template-columns: repeat(4, 1fr);
+          grid-template-rows: repeat(6, 1fr);
+        }
+      }
+      @media (max-width: 350px) {
+        .grid-container {
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(7, 1fr);
+        }
+      }
+    </style>
   </head>
   <body>
-    <header>
-        <h2>CHOOSE YOUR TOPIC USING BUTTON</h2>
-    </header>
+    <h1>Chose your topic</h1>
+    <!-- ----------- Category Start at 9 ---------------- -->
+    <div class="grid-container"></div>
+    <script src="../framework/anime-master/lib/anime.min.js"></script>
+    <script> 
+      let category = [
+        "General-Knowledge",
+        "Entertainment-Books",
+        "Entertainment-Film",
+        "Entertainment-Music",
+        "Entertainment-Musicals&Theatres",
+        "Entertainment-Television",
+        "Entertainment-Video-Games",
+        "Entertainment-Board-Games",
+        "Science&Nature",
+        "Science-Computers",
+        "Science-Mathematics",
+        "Mythology",
+        "Sports",
+        "Geography",
+        "History",
+        "Politics",
+        "Art",
+        "Celebrities",
+        "Animals",
+        "Vehicles",
+        "Entertainment-Comics",
+        "Science-Gadgets",
+        "Entertainment-Japanese-Anime&Manga",
+        "Entertainment-Cartoon&Animations",
+      ];
 
-    <!-- carousel -->
-    <div class="carousel">
-      <!-- list item -->
-      <div class="list">
-        <div class="item">
-          <img src="img/General-Knowledge.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">General-Knowledge</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Books.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Books</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Film.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Film</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Music.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Music</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Theatres.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Theatres</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Television.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Television</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Video-Games.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Video-Games</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Board-Games.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Board-Games</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Nature.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Nature</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Computers.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Computers</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Mathematics.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Mathematics</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Mythology.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Mythology</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Sports.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Sports</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Geography.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Geography</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/History.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">History</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Politics.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Politics</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Art.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Art</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Celebrities.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Celebrities</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Animals.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Animals</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Vehicles.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Vehicles</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Comics.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Comics</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Gadgets.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Gadgets</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Anime&Manga.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Anime&Manga</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Cartoon.jpg" />
-          <div class="content">
-            <div class="author">LUNDEV</div>
-            <div class="title">Your topic is</div>
-            <div class="topic">Cartoon</div>
-            <div class="buttons">
-              <button class="play">Play</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- list thumnail -->
-      <div class="thumbnail">
-        <div class="item">
-          <img src="img/General-Knowledge.jpg" />
-          <div class="content">
-            <div class="title">General-Knowledge</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Books.jpg" />
-          <div class="content">
-            <div class="title">Books</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Film.jpg" />
-          <div class="content">
-            <div class="title">Film</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Music.jpg" />
-          <div class="content">
-            <div class="title">Music</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Theatres.jpg" />
-          <div class="content">
-            <div class="title">Theatres</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Television.jpg" />
-          <div class="content">
-            <div class="title">Television</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Video-Games.jpg" />
-          <div class="content">
-            <div class="title">Video-Games</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Board-Games.jpg" />
-          <div class="content">
-            <div class="title">Board-Games</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Nature.jpg" />
-          <div class="content">
-            <div class="title">Nature</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Computers.jpg" />
-          <div class="content">
-            <div class="title">Computers</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Mathematics.jpg" />
-          <div class="content">
-            <div class="title">Mathematics</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Mythology.jpg" />
-          <div class="content">
-            <div class="title">Mythology</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Sports.jpg" />
-          <div class="content">
-            <div class="title">Sports</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Geography.jpg" />
-          <div class="content">
-            <div class="title">Geography</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/History.jpg" />
-          <div class="content">
-            <div class="title">History</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Politics.jpg" />
-          <div class="content">
-            <div class="title">Politics</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Art.jpg" />
-          <div class="content">
-            <div class="title">Art</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Celebrities.jpg" />
-          <div class="content">
-            <div class="title">Celebrities</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Animals.jpg" />
-          <div class="content">
-            <div class="title">Animals</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Vehicles.jpg" />
-          <div class="content">
-            <div class="title">Vehicles</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Comics.jpg" />
-          <div class="content">
-            <div class="title">Comics</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Gadgets.jpg" />
-          <div class="content">
-            <div class="title">Gadgets</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Anime&Manga.jpg" />
-          <div class="content">
-            <div class="title">Anime&Manga</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img/Cartoon.jpg" />
-          <div class="content">
-            <div class="title">Cartoon</div>
-          </div>
-        </div>
-      </div>
-      <!-- next prev -->
-
-      <div class="arrows">
-        <div class="on">
-          <div class="ballon">
-            <div class="wrapper-content">
-              <p>Scroll to change Category</p>
-            </div>
-          </div>
-        </div>
-        <div class="tooltip-lens">
-          <div class="ballon">
-            <div class="wrapper-content">
-              <p>Click to change Category</p>
-            </div>
-          </div>
-        </div>
-        <button id="prev"><</button>
-        <button id="next">></button>
-      </div>
-      <!-- time running -->
-      <div class="time"></div>
+      category.forEach((item, index) => {
+        document.querySelector(".grid-container").innerHTML += `
+    <div class="topic" id="${index + 9}">
+        <img src=".//img/${item}.gif" />
+        ${item}
     </div>
-
-    <script src="app.js"></script>
+    `;
+      });
+      let topic = document.querySelectorAll(".topic");
+      topic.forEach((e) => {
+        e.addEventListener("click", (e) => {
+          if (e.target.nodeName == "IMG") {
+            let option = e.target.parentNode.id;
+            localStorage.setItem("option", option);
+            console.log(option);
+            window.location.href = '../question/index.html';
+          } else {
+            let option = e.target.id;
+            localStorage.setItem("option", option);
+            console.log(option);  
+            window.location.href = '../question/index.html';
+          }
+        });
+      });
+    </script>
   </body>
 </html>

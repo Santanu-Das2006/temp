@@ -17,7 +17,6 @@
       input {
         font-family: "Poppins", sans-serif;
       }
-
       .container {
         position: relative;
         width: 100%;
@@ -399,9 +398,146 @@
           left: 50%;
         }
       }
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: #ecf0f1;
+      }
+
+      .loader {
+      position: absolute;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      margin: auto;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(5px); /* Apply blur to the background */
+      -webkit-backdrop-filter: blur(10px); /* For Safari */
+      justify-content: center;
+      align-items: center;
+      display: none;
+    }
+    .loaderAnimation{
+      display: flex;
+      animation: loader 0.5s linear;
+    }
+    @keyframes loader{
+      0%{
+        top: -100%;
+      }
+      100%{
+        top: 0;
+      }
+    }
+      .dot {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        width: 18px;
+        height: 18px;
+        border-radius: 100%;
+      }
+
+      .dot:nth-child(1) {
+        background-color: #f44336;
+        animation: jump--1 0.666s linear infinite;
+        box-shadow: rgba(255, 255, 255, 0.6) 0 0 2px 2px, #f44336 0 0 12px 0;
+      }
+
+      .dot:nth-child(2) {
+        background-color: #f1c40f;
+        animation: jump--2 0.666s linear infinite;
+        box-shadow: rgba(255, 255, 255, 0.6) 0 0 2px 2px, #f1c40f 0 0 12px 0;
+      }
+
+      .dot:nth-child(3) {
+        background-color: #03a9f4;
+        animation: jump--3 0.666s linear infinite;
+        box-shadow: rgba(255, 255, 255, 0.6) 0 0 2px 2px, #03a9f4 0 0 12px 0;
+      }
+
+      @keyframes jump--1 {
+        0% {
+          transform: translate3d(0, 0, 0) scale(2);
+        }
+        12.5% {
+          transform: translate3d(41.6667%, -142.8571%, 0);
+        }
+        25% {
+          transform: translate3d(250%, -250%, 0);
+        }
+        37.5% {
+          transform: translate3d(500%, 250%, 0);
+        }
+        50% {
+          transform: translate3d(500%, 0, 0);
+        }
+        100% {
+          transform: translate3d(0, 0, 0) scale(2);
+        }
+      }
+
+      @keyframes jump--2 {
+        0% {
+          transform: translate3d(250%, 0, 0);
+        }
+        25% {
+          transform: translate3d(0, 0, 0) scale(2);
+        }
+        37.5% {
+          transform: translate3d(41.6667%, -142.8571%, 0);
+        }
+        50% {
+          transform: translate3d(250%, -250%, 0);
+        }
+        62.5% {
+          transform: translate3d(500%, 250%, 0);
+        }
+        75% {
+          transform: translate3d(500%, 0, 0);
+        }
+        100% {
+          transform: translate3d(250%, 0, 0);
+        }
+      }
+
+      @keyframes jump--3 {
+        0% {
+          transform: translate3d(500%, 0, 0);
+        }
+        50% {
+          transform: translate3d(0, 0, 0) scale(2);
+        }
+        62.5% {
+          transform: translate3d(41.6667%, -142.8571%, 0);
+        }
+        75% {
+          transform: translate3d(250%, -250%, 0);
+        }
+        87.5% {
+          transform: translate3d(500%, 250%, 0);
+        }
+        100% {
+          transform: translate3d(500%, 0, 0);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
     </style>
   </head>
   <body>
+    <div class="loader">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
@@ -444,7 +580,7 @@
             <button class="btn transparent" id="sign-up-btn">Sign up</button>
           </div>
           <img
-            src="https://quizzy-quest.onrender.com/image/log.svg"
+            src="./img/log.svg"
             class="image"
             alt=""
           />
@@ -456,7 +592,7 @@
             <button class="btn transparent" id="sign-in-btn">Sign in</button>
           </div>
           <img
-            src="https://quizzy-quest.onrender.com/image/register.svg"
+            src="./img/register.svg"
             class="image"
             alt=""
           />
@@ -467,7 +603,7 @@
       const sign_in_btn = document.querySelector("#sign-in-btn");
       const sign_up_btn = document.querySelector("#sign-up-btn");
       const container = document.querySelector(".container");
-
+      const loader = document.querySelector(".loader")
       sign_up_btn.addEventListener("click", () => {
         container.classList.add("sign-up-mode");
       });
@@ -580,7 +716,7 @@
 
       sign.addEventListener("submit", async (e) => {
         e.preventDefault();
-
+        loader.classList.add("loaderAnimation")
         let userName = document.querySelector(".signUser").value;
         let email = document.querySelector(".signEmail").value;
         let pwd = document.querySelector(".signPass").value;
@@ -588,11 +724,9 @@
         let create = now.toLocaleString();
         let idObj = "abcdefghigklmnopqrstuvwxyz0123456789";
         let id = "";
-
         for (let i = 0; i < 4; i++) {
           id += idObj[Math.floor(Math.random() * idObj.length)];
         }
-
         let checkName = await createValidataName(userName);
         let checkMail = await createEmailValidate(email);
         let checkPass = checkPassword(pwd);
@@ -607,7 +741,6 @@
                 Create: create,
                 Update: create,
               };
-
               let value = await createUser(data);
               if (value) {
                 alert("User created successfully!");
@@ -617,12 +750,15 @@
               alert(
                 "Password not strong. Password mut be 8 character. At least 1 uppercase character, 1 number and 1 special character"
               );
+              loader.classList.remove("loaderAnimation")
             }
           } else {
             alert("Email already used in another Account");
+            loader.classList.remove("loaderAnimation")
           }
         } else {
           alert("Username already taken");
+          loader.classList.remove("loaderAnimation")
         }
       });
 
@@ -662,6 +798,7 @@
 
       login.addEventListener("submit", async (e) => {
         e.preventDefault();
+        loader.classList.add("loaderAnimation")
         let loginName = document.querySelector(".username").value;
         let loginPass = document.querySelector(".password").value;
         let checkAccount = await findAccount(loginName);
@@ -673,9 +810,11 @@
             window.location.href = "../index.html";
           } else {
             alert("Wrong Password");
+            loader.classList.remove("loaderAnimation")
           }
         } else {
           alert("Username not found");
+          loader.classList.remove("loaderAnimation")
         }
       });
     </script>

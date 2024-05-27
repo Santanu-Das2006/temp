@@ -292,8 +292,9 @@
         </div>
       </div>
     </div>
-    <script src="./framework/anime-master/lib/anime.min.js"></script>
-    <script src="./framework/vanilla-tilt/lib/vanilla-tilt.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="./tilt.min.js"></script>
     <script>
       let login = localStorage.getItem("login") || "false";
       let change = document.querySelector(".nav-btn span");
@@ -357,7 +358,7 @@
           { value: 0, duration: 0 },
           { value: 1, duration: 800 },
         ],
-        delay: anime.stagger(100, { start: 800 }), // Delay the start of the animation
+        delay: anime.stagger(100, { start: 800 }), 
         easing: "easeInOutQuad",
       });
 

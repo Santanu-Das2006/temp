@@ -111,7 +111,7 @@
         "Science-Gadgets",
         "Entertainment-Japanese-Anime&Manga",
         "Entertainment-Cartoon&Animations",
-      ];
+      ]
 
       category.forEach((item, index) => {
         document.querySelector(".grid-container").innerHTML += `
@@ -137,6 +137,25 @@
           }
         });
       });
+      /*topic.forEach((box, index) => {
+        setTimeout(() => {
+          animateBox(box)
+        }, index * 500)
+      })
+
+      function animateBox(box) {
+        anime({
+            targets: box,
+            translateX: anime.random(-200, 200), // Random translateX value between -200 and 200
+            translateY: anime.random(-200, 200), // Random translateY value between -200 and 200
+            scaleX: anime.random(0.5, 2), // Random scaleX value between 0.5 and 2
+            scaleY: anime.random(0.5, 2), // Random scaleY value between 0.5 and 2
+            opacity: [1, 0],
+            direction: 'reverse',
+            easing: 'easeInOutQuad', // Easing function
+            duration: 50 // Duration of the animation
+        });
+    }*/
     </script>
   </body>
 </html>
